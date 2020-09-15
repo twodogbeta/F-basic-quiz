@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getUserBasicInformation } from "../app";
+import { getUserBasicInformation, getUserEducationInformation } from "../app";
 
 jest.mock("axios");
 
@@ -21,5 +21,48 @@ describe(" get user basic information", () => {
     };
     axios.get.mockResolvedValue({ data: mockdata });
     await expect(getUserBasicInformation()).resolves.toEqual(mockdata);
+  });
+});
+
+describe(" can not get user education information", () => {
+  test("should not get users education information data", async () => {
+    axios.get.mockRejectedValue({});
+    await expect(getUserEducationInformation()).rejects.toEqual({});
+  });
+});
+
+describe(" get user education information", () => {
+  test("should get users basic information data", async () => {
+    const mockdata = [
+      {
+        userId: 1,
+        year: "1990",
+        title: "I was born in Katowice",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, exercitationem, totam, dolores iste dolore est aut modi.",
+      },
+      {
+        userId: 1,
+        year: "2005",
+        title: "Secondary school specializing in artistic",
+        description:
+          "Eos, explicabo, nam, tenetur et ab eius deserunt aspernatur ipsum ducimus quibusdam quis voluptatibus.",
+      },
+      {
+        userId: 1,
+        year: "2009",
+        title: "First level graduation in Graphic Design",
+        description:
+          "Aspernatur, mollitia, quos maxime eius suscipit sed beatae ducimus quaerat quibusdam perferendis? Iusto, quibusdam asperiores unde repellat.",
+      },
+      {
+        userId: 1,
+        year: "2012",
+        title: "Second level graduation in Graphic Design",
+        description: "Ducimus, aliquam tempore autem itaque et accusantium!  ",
+      },
+    ];
+    axios.get.mockResolvedValue({ data: mockdata });
+    await expect(getUserEducationInformation()).resolves.toEqual(mockdata);
   });
 });
