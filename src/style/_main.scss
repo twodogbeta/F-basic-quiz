@@ -3,6 +3,7 @@
   margin: 0 50px 20px 50px;
   padding-left: 15px;
 
+  // TODO feedback: 基本使用了标签选择器去添加样式，建议用class
   ul {
     display: flex;
     flex-direction: column;
@@ -19,6 +20,7 @@
         display: flex;
         flex-direction: column;
         width: 90%;
+        // TODO feedback: 通常不用margin去控制边距，一般都会是百分比或px
         margin: 0 0 1em 5em;
         padding: 1em;
         background-color: $gray-light;

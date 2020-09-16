@@ -33,6 +33,7 @@ describe(" can not get user education information", () => {
 
 describe(" get user education information", () => {
   test("should get users basic information data", async () => {
+    // TODO feedback: 既然mock的数据不影响测试结果，不需要准备如此复杂的mockdata，这样反而导致代码可读性差
     const mockdata = [
       {
         userId: 1,
